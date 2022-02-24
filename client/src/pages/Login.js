@@ -1,38 +1,33 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { ADD_USER } from "../utils/mutations";
+import { LOGIN } from "../utils/mutations";
+
 import Auth from "../utils/auth";
 
-const Signup = () => {
-  // set initial state to empty strings
-  const [formState, setFormState] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-
-  const [addUser, { error }] = useMutation(ADD_USER);
+const Login = () => {
+  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [login, { error }] = useMutation(LOGIN);
 
   // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    // set formState to whatever the value of the inputs are
     setFormState({
       ...formState,
       [name]: value,
     });
   };
 
+  // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const { data } = await addUser({
+      const { data } = await login({
         variables: { ...formState },
       });
 
-      Auth.login(data.addUser.token);
+      Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
     }
@@ -52,4 +47,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;
