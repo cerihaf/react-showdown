@@ -4,7 +4,7 @@ const typeDefs = gql`
   type User {
     id: ID
     username: String
-    email: String
+    password: String
   }
 
   type Auth {
@@ -12,13 +12,39 @@ const typeDefs = gql`
     user: User
   }
 
+  type Matchup {
+    id: ID
+    animal_1: String
+    animal_2: String
+  }
+
+  type Vote {
+    id: ID
+    vote: Int
+    matchup_id: Int
+    user_id: Int
+  }
+
+  type Comment {
+    id: ID
+    comment: String
+    color: Int
+    matchup_id: Int
+    user_id: Int
+    username: String
+  }
+
   type Query {
-    helloWorld: String
+    getAllUsers(): User
+    getUser(id: ID!): User
+    getMatchup(id: ID!): Matchup
   }
 
   type Mutation {
-    login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(username: String!, password: String!): Auth
+    login(username: String!, password: String!): Auth
+    vote(vote: Int!, matchup_id: Int!): Vote
+    comment(comment: String!, color: Int!, matchup_id: Int!): Comment
   }
 `;
 
