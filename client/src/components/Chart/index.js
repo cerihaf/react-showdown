@@ -1,7 +1,10 @@
 import React from "react";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 
-export default function Chart() {
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+export default function PieChart() {
   return (
     <div>
       <h1>Vote Count</h1>
@@ -10,7 +13,8 @@ export default function Chart() {
           labels: ["Red", "Blue"],
           datasets: [
             {
-              data: [20, 20],
+              label: "# of votes",
+              data: [5, 20],
               backgroundColor: ["red", "blue"],
             },
           ],

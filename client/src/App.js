@@ -10,7 +10,7 @@ import { setContext } from "@apollo/client/link/context";
 
 import Home from "./pages/Home";
 import Nav from "./components/Nav";
-import Chart from "./components/Chart";
+import PieChart from "./components/Chart";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 
@@ -41,7 +41,7 @@ function App() {
           <Nav />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/chart" component={Chart} />
+            <Route exact path="/chart" component={PieChart} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/login" component={Login} />
           </Switch>
