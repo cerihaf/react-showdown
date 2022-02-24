@@ -1,26 +1,27 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 
-import Home from './pages/Home';
-import Nav from './components/Nav';
+import Home from "./pages/Home";
+import Nav from "./components/Nav";
+import Chart from "./components/Chart";
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -38,6 +39,7 @@ function App() {
           <Nav />
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/chart" component={Chart} />
           </Switch>
         </div>
       </Router>
