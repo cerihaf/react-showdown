@@ -7,7 +7,7 @@ function Nav() {
     if (Auth.loggedIn()) {
       return (
         <ul className="flex justify-end">
-          <li className="mx-1 text-xl p-2">
+          <li className="mx-1 text-xl p-2 text-maizecrayola">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a href="/" onClick={() => Auth.logout()}>
               Logout
@@ -26,12 +26,14 @@ function Nav() {
           </li>
         </ul>
       );
+
     }
   }
 
   return (
     <header className="flex justify-between px-1 bg-charcoal">
-      <h1 className="font-brand text-3xl tracking-wide p-2">
+      <h1 className="font-brand text-3xl tracking-wide p-2 text-maizecrayola">
+
         <Link to="/">
           <span>
             <svg

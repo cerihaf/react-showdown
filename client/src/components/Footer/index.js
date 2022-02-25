@@ -1,6 +1,7 @@
 import React from "react";
 
 function Footer() {
+
   return (
     <footer className="bg-charcoal p-2 flex justify-end">
       <p>
