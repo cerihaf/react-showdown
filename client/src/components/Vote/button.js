@@ -2,11 +2,11 @@ import React from "react";
 
 const VoteButton = ({animal, bgcolor}) => {
 
-    const classnames = `w-full border-solid border-2 border-amber-800 ${bgcolor} h-96 text-4xl rounded-3xl`
+    const classnames = `h-60 px-36 border-solid border-2 border-amber-800 ${bgcolor} text-4xl rounded-3xl`
 
 
     return(
-        <div className="bg-persiangreen flex-1">
+        <div className="bg-charcoal flex-1 flex justify-center">
             <button className={classnames}>
                 {animal}
             </button>

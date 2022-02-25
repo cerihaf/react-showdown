@@ -8,8 +8,8 @@ module.exports = {
     },
     extend: {
       colors: {
-        'persiangreen': '#2A9D8F', //background
-        'charcoal': '#264653', //animal button blue
+        'persiangreen': '#2A9D8F', //animal button
+        'charcoal': '#264653', //background
         'maizecrayola': '#E9C46A', //accent color
         'sandybrown': '#F4A261', //button color
         'burntsienna': '#E76F51', //animal button red
