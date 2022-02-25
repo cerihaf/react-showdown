@@ -91,8 +91,7 @@ const resolvers = {
 
       const correctPW = user.checkPassword(password);
       if (!correctPW) {
-        console.log("Incorrect password!");
-        return;
+        throw new AuthenticationError("Incorrect Credentials");
       }
 
       const token = signToken(user);
