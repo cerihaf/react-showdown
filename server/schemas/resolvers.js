@@ -4,6 +4,21 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
+    getUser: async (parent, { id }) => {
+      //for debugging (not for users)
+      try {
+        const userData = await User.findOne({
+          where: { id },
+          raw: true,
+        });
+
+        console.log(userData);
+        return userData;
+      } catch (err) {
+        console.log("Couldn't find user!");
+        return err;
+      }
+    },
     getMatchup: async (parent, { id }, context) => {
       //get a single matchup (this is an inefficient way of doing this, feel free to change)
       if (!context.user) return;
@@ -12,33 +27,39 @@ const resolvers = {
       const matchupData = await Matchup.findOne({ where: { id }, raw: true });
       console.log(matchupData);
       if (!matchupData) return;
-        //matchup exists
-        const voteSearch = await Vote.findOne({
-          where: { matchup_id: id, user_id },
-          raw: true
-        });
-        const hasVoted = voteSearch !== null; //user hasVoted true or false
-        const voteData = await Vote.findAll({
-          where: { matchup_id: id },
-          attributes: ["vote"], //only need to know the vote counts
-          raw: true 
-        });
-        const comments = await Comment.findAll({
-          where: { matchup_id: id },
-          // attributes: ["comment", "color", "username", "createdAt"],
-          raw: true,
-          //users only need to know these
-        });
-        let blueVoteCount = 0;
-        for (let i = 0; i < voteData.length; i++) {
-          if (voteData[i].vote === 1) blueVoteCount++;
-        }
-        const redVoteCount = voteData.length - blueVoteCount;
-        //SEND THE MATCHUP DATA HERE
-        //res.render('home', {layout:'main', date, hasVoted, animal_1, animal_2, blueVoteCount, redVoteCount, comments, matchup_id});
-        const data = { ...matchupData, blueVoteCount, redVoteCount, hasVoted, comments};
-        console.log(data)
-        return data;
+      //matchup exists
+      const voteSearch = await Vote.findOne({
+        where: { matchup_id: id, user_id },
+        raw: true,
+      });
+      const hasVoted = voteSearch !== null; //user hasVoted true or false
+      const voteData = await Vote.findAll({
+        where: { matchup_id: id },
+        attributes: ["vote"], //only need to know the vote counts
+        raw: true,
+      });
+      const comments = await Comment.findAll({
+        where: { matchup_id: id },
+        // attributes: ["comment", "color", "username", "createdAt"],
+        raw: true,
+        //users only need to know these
+      });
+      let blueVoteCount = 0;
+      for (let i = 0; i < voteData.length; i++) {
+        if (voteData[i].vote === 1) blueVoteCount++;
+      }
+      const redVoteCount = voteData.length - blueVoteCount;
+      //SEND THE MATCHUP DATA HERE
+      //res.render('home', {layout:'main', date, hasVoted, animal_1, animal_2, blueVoteCount, redVoteCount, comments, matchup_id});
+      const data = {
+        ...matchupData,
+        blueVoteCount,
+        redVoteCount,
+        hasVoted,
+        comments,
+      };
+      console.log(data);
+      return data;
     },
   },
 
