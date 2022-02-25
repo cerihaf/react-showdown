@@ -36,8 +36,8 @@ function Nav() {
 
   return (
     <header className="flex justify-between px-1 bg-charcoal">
-      <h1>
-        <Link to="/">
+      <h1 className="font-brand">
+          <Link to="/">
           <span role="img" aria-label="">🐍</span>
           Animal Showdown 2.0
         </Link>
