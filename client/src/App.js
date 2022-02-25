@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import Nav from "./components/Nav";
 import PieChart from "./components/Chart";
 import Login from "./pages/Login";
+import Footer from "./components/Footer";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -43,6 +44,7 @@ function App() {
             <Route exact path="/chart" component={PieChart} />
             <Route exact path="/login" component={Login} />
           </Switch>
+          <Footer />
         </div>
       </Router>
     </ApolloProvider>

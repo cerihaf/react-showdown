@@ -64,7 +64,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form>
+    <form className="bg-persiangreen">
       <div>
         <label htmlFor="username">Username:</label>
         <input
