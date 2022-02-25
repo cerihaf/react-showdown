@@ -16,21 +16,6 @@ function Nav() {
           </li>
         </ul>
       );
-    } else {
-      return (
-        <ul className="flex justify-end">
-          <li className="mx-1 text-xl p-2 text-maizecrayola">
-            <Link to="/signup">
-              Signup
-            </Link>
-          </li>
-          <li className="mx-1 text-xl p-2 text-maizecrayola">
-            <Link to="/login">
-              Login
-            </Link>
-          </li>
-        </ul>
-      );
     }
   }
 
