@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Auth from "../../utils/auth";
 import { useMutation } from "@apollo/client";
-import { LOGIN } from "../../utils/mutations";
-import { ADD_USER } from "../../utils/mutations";
+import { LOGIN, ADD_USER } from "../../utils/mutations";
 
 const LoginForm = () => {
   const [formState, setFormState] = useState({
@@ -71,6 +70,7 @@ const LoginForm = () => {
           type="text"
           name="username"
           id="username"
+          value={formState.username}
           onChange={handleChange}
         />
       </div>
@@ -80,6 +80,7 @@ const LoginForm = () => {
           type="password"
           name="password"
           id="password"
+          value={formState.password}
           onChange={handleChange}
         />
       </div>
