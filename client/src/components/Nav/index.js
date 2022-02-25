@@ -8,7 +8,7 @@ function Nav() {
     if (Auth.loggedIn()) {
       return (
         <ul className="flex justify-end">
-          <li className="mx-1">
+          <li className="mx-1 text-xl p-2">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a href="/" onClick={() => Auth.logout()}>
               Logout
@@ -19,12 +19,12 @@ function Nav() {
     } else {
       return (
         <ul className="flex justify-end">
-          <li className="mx-1">
+          <li className="mx-1 text-xl p-2">
             <Link to="/signup">
               Signup
             </Link>
           </li>
-          <li className="mx-1">
+          <li className="mx-1 text-xl p-2">
             <Link to="/login">
               Login
             </Link>
@@ -36,7 +36,7 @@ function Nav() {
 
   return (
     <header className="flex justify-between px-1 bg-persiangreen">
-      <h1 className="font-brand">
+      <h1 className="font-brand text-3xl tracking-wide p-2">
         <Link to="/">
           <span role="img" aria-label="">🐍</span>
           Animal Showdown 2.0
