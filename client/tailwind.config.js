@@ -3,6 +3,9 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    fontFamily: {
+      'brand': ['Staatliches, cursive']
+    },
     extend: {
       colors: {
         'persiangreen': '#2A9D8F', //background
