@@ -13,9 +13,6 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <div className="w-full lg:w-1/2 flex justify-center items-center flex-1">
-        <div><LoginForm /></div> 
-      </div>
     </section>
   );
 };
