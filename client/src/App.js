@@ -37,13 +37,15 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
+        <div className="flex flex-col">
           <Nav />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/chart" component={PieChart} />
-            <Route exact path="/login" component={Login} />
-          </Switch>
+          <main className="flex-1">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/chart" component={PieChart} />
+              <Route exact path="/login" component={Login} />
+            </Switch>
+          </main>
           <Footer />
         </div>
       </Router>
