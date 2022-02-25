@@ -3,7 +3,7 @@ import LoginForm from "../components/Login";
 
 const Login = () => {
   return (
-    <section>
+    <section className="flex flex-1">
       <div className="flex w-full flex-row lg:flex-row bg-persiangreen ">
         <div className="w-full lg:w-1/2">
           <img
