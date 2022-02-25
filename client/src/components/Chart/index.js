@@ -6,7 +6,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function PieChart() {
   return (
-    <div className="bg-persiangreen">
+    <div className="bg-charcoal">
       <h1>Vote Count</h1>
       <Pie
         data={{

@@ -35,7 +35,7 @@ function Nav() {
   }
 
   return (
-    <header className="flex justify-between px-1 bg-persiangreen">
+    <header className="flex justify-between px-1 bg-charcoal">
       <h1>
         <Link to="/">
           <span role="img" aria-label="">🐍</span>
