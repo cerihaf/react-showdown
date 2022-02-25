@@ -66,21 +66,24 @@ const LoginForm = () => {
   return (
     <form className="bg-persiangreen">
       <div>
-        <label htmlFor="username">Username:</label>
+        <label className="sr-only" htmlFor="username">Username:</label>
         <input
           type="text"
           name="username"
           id="username"
           onChange={handleChange}
+          placeholder="USERNAME"
         />
       </div>
       <div>
-        <label htmlFor="password">Password:</label>
+        <label className="sr-only" htmlFor="password">Password:</label>
         <input
           type="password"
           name="password"
           id="password"
           onChange={handleChange}
+          placeholder="PASSWORD"
+          className="bg-zinc-400 "
         />
       </div>
       <div className="flex p-4">
