@@ -91,75 +91,65 @@ const resolvers = {
 
       const correctPW = user.checkPassword(password);
       if (!correctPW) {
-        console.log("Incorrect password!");
-        return;
+        throw new AuthenticationError("Incorrect Credentials");
       }
 
       const token = signToken(user);
       return { token, user };
     },
-    vote: (parent, { vote, matchup_id }, context) => {
+    vote: async (parent, { vote, matchup_id }, context) => {
       const user_id = context.user.id; //get user_id with JWT
       console.log(user_id);
-      Vote.findOne({ where: { matchup_id, user_id } })
-        .then((voteSearch) => {
-          if (voteSearch === null) {
-            //user hasn't voted yet on this matchup
-            Vote.create({
-              vote: vote,
-              matchup_id: matchup_id,
-              user_id: user_id,
-            })
-              .then((userVote) => console.log("Vote received!"))
-              .catch((err) => {
-                console.log(err);
-                return err;
-              });
-          } else console.log("User has already voted on this!");
-        })
-        .catch((err) => {
-          console.log("Find one vote error!");
-          console.log(err);
-          return err;
+      const voteSearch = await Vote.findOne({ where: { matchup_id, user_id } });
+      if (!voteSearch) {
+        //user hasn't voted yet on this matchup
+        const userVote = await Vote.create({
+          vote: vote,
+          matchup_id: matchup_id,
+          user_id: user_id,
         });
+        try {
+          console.log(userVote, "Vote received!");
+          return userVote;
+        } catch (e) {
+          console.error(e);
+        }
+      } else console.log("User has already voted on this!");
     },
-    comment: (parent, { comment, color, matchup_id }, context) => {
+    comment: async (parent, { comment, color, matchup_id }, context) => {
       //vote on a matchup (triggered in a client side js script)
       const user_id = context.user.id;
-      Vote.findOne({
+      const voteSearch = await Vote.findOne({
         where: { matchup_id, user_id },
         include: {
           model: User,
           where: { id: user_id },
         },
-      }).then((voteSearch) => {
-        if (voteSearch !== null) {
-          //user has voted on this matchup, can comment
-          //1 = blue, 2 = red (rendered client side)
-          if (voteSearch.vote === 1 || 2) {
-            color = voteSearch.vote;
-            const username = voteSearch.user.username;
-            Comment.create({
-              comment: comment,
-              color: color,
-              matchup_id: matchup_id,
-              user_id: context.user.id, //get user ID with JWT!
-              username: username,
-            }) //**do a matchup route get request after this, it will render comments and votes**
-              .then((commentData) => res.json(commentData))
-              .catch((err) => {
-                console.log("Could not post comment!");
-                return err;
-              });
-          } else {
-            console.log("user has not voted on this yet");
-            return err;
-          }
-        } else {
-          console.log("user has not voted on this yet");
-          return err;
-        }
       });
+      console.log(voteSearch);
+      if (!voteSearch) return;
+      if (voteSearch.vote === 1 || 2) {
+        //user has voted on this matchup, can comment
+        //1 = blue, 2 = red (rendered client side)
+        color = voteSearch.vote;
+        const username = voteSearch.user.username;
+        const commentData = await Comment.create({
+          comment: comment,
+          color: color,
+          matchup_id: matchup_id,
+          user_id: context.user.id, //get user ID with JWT!
+          username: username,
+        }); //**do a matchup route get request after this, it will render comments and votes**
+        try {
+          return commentData;
+        } catch (e) {
+          console.error(e);
+          console.log("Could not post comment!");
+        }
+      } else {
+        console.log("user has not voted on this yet");
+        return err;
+      }
     },
   },
 };
