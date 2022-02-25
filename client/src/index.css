@@ -1,6 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.lion {
+    background:
+    url('../public/images/lion.png');
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+    
+
 html, body {
     height: 100%;
-};
+}

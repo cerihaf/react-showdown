@@ -1,10 +1,9 @@
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     fontFamily: {
-      'brand': ['Staatliches, cursive']
+      brand: ["Staatliches", "cursive"],
+      login: ["Noto Serif Display", "serif"],
     },
     extend: {
       colors: {
@@ -17,4 +16,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
