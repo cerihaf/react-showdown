@@ -6,7 +6,7 @@ const VoteButton = ({animal, bgcolor}) => {
 
 
     return(
-        <div className="bg-persiangreen flex-1">
+        <div className="bg-charcoal flex-1">
             <button className={classnames}>
                 {animal}
             </button>

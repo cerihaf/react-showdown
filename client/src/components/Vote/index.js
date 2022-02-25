@@ -7,9 +7,9 @@ const VoteBox = () => {
 
 
   return (
-    <div className="bg-persiangreen flex">
-      <VoteButton animal="animal 1" bgcolor="bg-orange-200" />
-      <VoteButton animal="animal 2" bgcolor="bg-rose-400" />
+    <div className="bg-charcoal flex">
+      <VoteButton animal="animal 1" bgcolor="bg-burntsienna" />
+      <VoteButton animal="animal 2" bgcolor="bg-persiangreen" />
     </div>
   );
 };

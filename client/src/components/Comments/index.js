@@ -7,7 +7,7 @@ const Comments = () => {
 
 
   return (
-    <div className="bg-persiangreen">
+    <div className="bg-charcoal">
         placeholder text
     </div>
   );
