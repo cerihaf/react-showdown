@@ -39,6 +39,7 @@ const typeDefs = gql`
   }
 
   type Query {
+    getAllUsers: [User]
     getUser(id: ID!): User
     getMatchup(id: ID!): Matchup
   }

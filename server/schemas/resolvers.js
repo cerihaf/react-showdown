@@ -4,11 +4,24 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
+    getAllUsers: async (parent) => {
+      //for debugging (not for users)
+      try {
+        const userData = await User.findAll({
+          attributes: { exclude: ["password"] },
+        });
+        return userData;
+      } catch (err) {
+        console.log("Couldn't find users!");
+        return err;
+      }
+    },
     getUser: async (parent, { id }) => {
       //for debugging (not for users)
       try {
         const userData = await User.findOne({
           where: { id },
+          attributes: { exclude: ["password"] },
           raw: true,
         });
 
