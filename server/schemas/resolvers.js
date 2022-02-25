@@ -4,9 +4,6 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    helloWorld: () => {
-      return "Hello World";
-    },
     getMatchup: async (parent, { id }, context) => {
       //get a single matchup (this is an inefficient way of doing this, feel free to change)
       if (!context.user) return;

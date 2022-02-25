@@ -39,7 +39,6 @@ const typeDefs = gql`
   }
 
   type Query {
-    helloWorld: String
     getMatchup(id: ID!): Matchup
   }
 
