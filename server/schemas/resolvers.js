@@ -98,30 +98,24 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    vote: (parent, { vote, matchup_id }, context) => {
+    vote: async (parent, { vote, matchup_id }, context) => {
       const user_id = context.user.id; //get user_id with JWT
       console.log(user_id);
-      Vote.findOne({ where: { matchup_id, user_id } })
-        .then((voteSearch) => {
-          if (voteSearch === null) {
-            //user hasn't voted yet on this matchup
-            Vote.create({
-              vote: vote,
-              matchup_id: matchup_id,
-              user_id: user_id,
-            })
-              .then((userVote) => console.log("Vote received!"))
-              .catch((err) => {
-                console.log(err);
-                return err;
-              });
-          } else console.log("User has already voted on this!");
-        })
-        .catch((err) => {
-          console.log("Find one vote error!");
-          console.log(err);
-          return err;
+      const voteSearch = await Vote.findOne({ where: { matchup_id, user_id } });
+      if (!voteSearch) {
+        //user hasn't voted yet on this matchup
+        const userVote = await Vote.create({
+          vote: vote,
+          matchup_id: matchup_id,
+          user_id: user_id,
         });
+        try {
+          console.log(userVote, "Vote received!");
+          return userVote;
+        } catch (e) {
+          console.error(e);
+        }
+      } else console.log("User has already voted on this!");
     },
     comment: async (parent, { comment, color, matchup_id }, context) => {
       //vote on a matchup (triggered in a client side js script)
