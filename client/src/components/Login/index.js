@@ -64,6 +64,7 @@ const LoginForm = () => {
 
   return (
     <form className="bg-charcoal">
+      <h2 className="font-login text-2xl text-maizecrayola text-center">Register for the Battle!</h2>
       <div>
         <label className="sr-only" htmlFor="username">Username:</label>
         <input
@@ -73,7 +74,7 @@ const LoginForm = () => {
           value={formState.username}
           onChange={handleChange}
           placeholder="USERNAME"
-          className="bg-zinc-400 placeholder:text-slate-500 placeholder:text-center py-5 px-12 my-3 rounded-none"
+          className="box-border w-full bg-zinc-400 placeholder:text-slate-500 placeholder:text-center py-5 px-12 my-3 rounded-none"
         />
       </div>
       <div>
@@ -85,13 +86,13 @@ const LoginForm = () => {
           value={formState.password}
           onChange={handleChange}
           placeholder="PASSWORD"
-          className="bg-zinc-400 placeholder:text-slate-500 placeholder:text-center py-5 px-12 my-3 rounded-none"        />
+          className="box-border w-full bg-zinc-400 placeholder:text-slate-500 placeholder:text-center py-5 px-12 my-3 rounded-none"        />
       </div>
       <div className="flex mt-3">
-        <button type="button" onClick={handleLogin} className="mr-4 bg-zinc-400 py-5 pl-10 pr-10">
+        <button type="button" onClick={handleLogin} className="font-login font-bold mr-4 bg-maizecrayola py-5 pl-10 pr-10">
           LOGIN
         </button>
-        <button type="button" onClick={handleSignUp} className=" bg-zinc-400 py-5 pl-9 pr-8">
+        <button type="button" onClick={handleSignUp} className="font-login font-bold bg-maizecrayola py-5 pl-9 pr-8">
           SIGN UP
         </button>
       </div>

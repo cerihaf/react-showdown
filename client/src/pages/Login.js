@@ -7,10 +7,8 @@ const Login = () => {
       <div className="flex w-full flex-row lg:flex-row bg-charcoal ">
         <div className="w-full lg:w-1/2 lion">
         </div>
-        <div className="w-full lg:w-1/2">
-          <div>
-            <LoginForm />
-          </div>
+        <div className="w-full lg:w-1/2 flex justify-center items-center flex-1">
+          <div><LoginForm /></div> 
         </div>
       </div>
     </section>
