@@ -3,13 +3,14 @@ import VoteBox from "../components/Vote";
 
 const Home = () => {
   
-  const [hasVoted, setHasVoted] = useState(false)
+  const [hasVoted, setHasVoted] = useState(true)
 
 
   return (
     <div className="container bg-charcoal">
       <h1 className="underline">Hello World</h1>
-      <VoteBox/>
+      <VoteBox setHasVoted={setHasVoted} hasVoted={hasVoted} />
+      {hasVoted  &&  (<h1>Test</h1>)}
     </div>
   );
 };
