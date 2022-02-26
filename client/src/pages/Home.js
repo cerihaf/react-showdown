@@ -7,7 +7,7 @@ const Home = () => {
 
 
   return (
-    <div className="container bg-charcoal">
+    <div className="container">
       <h1 className="underline">Hello World</h1>
       <VoteBox setHasVoted={setHasVoted} hasVoted={hasVoted} />
       {hasVoted  &&  (<h1>Test</h1>)}
