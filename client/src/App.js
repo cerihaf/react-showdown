@@ -39,7 +39,7 @@ function App() {
       <Router>
         <div className="flex flex-col min-h-screen">
           <Nav />
-          <main className="flex-1 flex">
+          <main className="flex-1 flex justify-center bg-charcoal">
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/chart" component={PieChart} />
