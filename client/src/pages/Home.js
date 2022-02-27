@@ -27,16 +27,20 @@ const Home = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+  console.log(data)
 
   return (
-    <div className="container">
-      <VoteBox
-        matchup={matchup}
-        handleNextMatchup={handleNextMatchup}
-        setHasVoted={setHasVoted}
-        hasVoted={hasVoted}
-      />
-      {hasVoted && <PieChart data={matchup} />}
+    <div>
+      <h1 className="text-center font-brand font-normal text-4xl py-12">WHO WOULD WIN IN A FIGHT?</h1>
+      <div className="container">
+        <VoteBox
+          matchup={matchup}
+          handleNextMatchup={handleNextMatchup}
+          setHasVoted={setHasVoted}
+          hasVoted={hasVoted}
+        />
+        {hasVoted && <PieChart data={matchup} />}
+      </div>
     </div>
   );
 };
