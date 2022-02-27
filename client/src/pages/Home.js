@@ -31,7 +31,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1 className="text-center font-brand font-normal text-4xl py-12">WHO WOULD WIN IN A FIGHT?</h1>
+      <h1 className="text-center font-brand font-normal text-4xl py-12 text-antiquewhite">WHO WOULD WIN IN A FIGHT?</h1>
       <div className="container">
         <VoteBox
           matchup={matchup}

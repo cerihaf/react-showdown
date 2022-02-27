@@ -15,6 +15,7 @@ module.exports = {
         'burntsienna': '#E76F51', //animal button red
         'auburn': "#9E2A2B", //hover button red
         'HeliotropeGray': '#734F5A', //border color
+        'antiquewhite': '#faebd7' //login animation color
       }
     },
   },
