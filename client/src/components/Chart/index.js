@@ -12,7 +12,7 @@ export default function PieChart({data}) {
   const blue = data?.blueVoteCount;
 
   return (
-    <div className="bg-charcoal">
+    <div className="bg-charcoal max-w-sm">
       <Pie
         data={{
           labels: [data.animal_1, data.animal_2],
@@ -23,9 +23,6 @@ export default function PieChart({data}) {
               backgroundColor: ["#E76F51", "#2A9D8F"],
             },
           ],
-        }}
-        options={{
-          responsive: true,
         }}
       />
     </div>
