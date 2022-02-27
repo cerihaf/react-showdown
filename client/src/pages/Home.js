@@ -31,8 +31,8 @@ const Home = () => {
   console.log(data);
 
   return (
-    <div className="container">
-      <h1 className="text-center font-brand font-normal text-4xl py-12 text-antiquewhite">
+    <div className="container max-w-5xl">
+      <h1 className="text-center font-brand font-normal text-6xl py-12 text-antiquewhite">
         WHO WOULD WIN IN A FIGHT?
       </h1>
       <VoteBox
@@ -42,7 +42,7 @@ const Home = () => {
         hasVoted={hasVoted}
       />
       {hasVoted && (
-        <div>
+        <div className="flex flex-row justify-around">
           <PieChart data={matchup} />
           <Comments matchupId={matchupId} />
         </div>
