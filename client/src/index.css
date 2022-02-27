@@ -2,16 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+html,
+body {
+  height: 100%;
+  font-weight: 800;
+}
+
+body {
+  background: yellow;
+  font-family: Arial;
+}
+
+.svg {
+  display: block;
+  font: 10rem "Staatliches";
+  letter-spacing: 1rem;
+  margin: 0 auto;
+}
+
+.text-copy {
+  fill: none;
+  stroke: white;
+  stroke-dasharray: 6% 29%;
+  stroke-width: 5px;
+  stroke-dashoffset: 0%;
+  animation: stroke-offset 5.5s infinite linear;
+}
+
+.text-copy:nth-child(1) {
+    stroke:antiquewhite;
+  /*stroke: #4d163d;*/
+  animation-delay: -1;
+}
+
+.text-copy:nth-child(2) {
+    stroke:antiquewhite;
+  /*stroke: #840037;*/
+  animation-delay: -2s;
+}
+
+.text-copy:nth-child(3) {
+    stroke:antiquewhite;
+  /*stroke: #bd0034;*/
+  animation-delay: -3s;
+}
+
+.text-copy:nth-child(4) {
+    stroke:antiquewhite;
+  /*stroke: #bd0034;*/
+  animation-delay: -4s;
+}
+
+.text-copy:nth-child(5) {
+    stroke:antiquewhite;
+  /*stroke: #fdb731;*/
+  animation-delay: -5s;
+}
+
+@keyframes stroke-offset {
+  100% {
+    stroke-dashoffset: -35%;
+  }
+}
 
 .lion {
-    background:
-    url('../public/images/lion.png');
-    background-size: contain;
-    background-position: bottom;
-    background-repeat: no-repeat;
+  background: url("../public/images/lion.png");
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  ;
 }
-    
 
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
