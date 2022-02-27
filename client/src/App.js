@@ -13,6 +13,7 @@ import Nav from "./components/Nav";
 import PieChart from "./components/Chart";
 import Login from "./pages/Login";
 import Footer from "./components/Footer";
+import Comments from "./components/Comments";
 
 const httpLink = createHttpLink({
   uri: "/graphql",

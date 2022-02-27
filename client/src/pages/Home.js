@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import VoteBox from "../components/Vote";
 import PieChart from "../components/Chart";
+import Comments from "../components/Comments";
 import { GET_MATCHUP } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 
@@ -27,20 +28,25 @@ const Home = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.log(data)
+  console.log(data);
 
   return (
-    <div>
-      <h1 className="text-center font-brand font-normal text-4xl py-12 text-antiquewhite">WHO WOULD WIN IN A FIGHT?</h1>
-      <div className="container">
-        <VoteBox
-          matchup={matchup}
-          handleNextMatchup={handleNextMatchup}
-          setHasVoted={setHasVoted}
-          hasVoted={hasVoted}
-        />
-        {hasVoted && <PieChart data={matchup} />}
-      </div>
+    <div className="container">
+      <h1 className="text-center font-brand font-normal text-4xl py-12 text-antiquewhite">
+        WHO WOULD WIN IN A FIGHT?
+      </h1>
+      <VoteBox
+        matchup={matchup}
+        handleNextMatchup={handleNextMatchup}
+        setHasVoted={setHasVoted}
+        hasVoted={hasVoted}
+      />
+      {hasVoted && (
+        <div>
+          <PieChart data={matchup} />
+          <Comments matchupId={matchupId} />
+        </div>
+      )}
     </div>
   );
 };
