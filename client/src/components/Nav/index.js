@@ -7,7 +7,7 @@ function Nav() {
     if (Auth.loggedIn()) {
       return (
         <ul className="flex justify-end">
-          <li className="mx-1 text-xl p-2 text-maizecrayola">
+          <li className="mx-1 text-xl p-2 text-maizecrayola font-brand">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a href="/login" onClick={() => Auth.logout()}>
               Logout

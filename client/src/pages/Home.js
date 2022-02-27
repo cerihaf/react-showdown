@@ -28,9 +28,13 @@ const Home = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+  console.log(data);
 
   return (
     <div className="container">
+      <h1 className="text-center font-brand font-normal text-4xl py-12 text-antiquewhite">
+        WHO WOULD WIN IN A FIGHT?
+      </h1>
       <VoteBox
         matchup={matchup}
         handleNextMatchup={handleNextMatchup}
