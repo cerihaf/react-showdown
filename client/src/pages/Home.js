@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import VoteBox from "../components/Vote";
 import PieChart from "../components/Chart";
+import Comments from "../components/Comments";
 import { GET_MATCHUP } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 
@@ -36,7 +37,12 @@ const Home = () => {
         setHasVoted={setHasVoted}
         hasVoted={hasVoted}
       />
-      {hasVoted && <PieChart data={matchup} />}
+      {hasVoted && (
+        <div>
+          <PieChart data={matchup} />
+          <Comments matchupId={matchupId} />
+        </div>
+      )}
     </div>
   );
 };
