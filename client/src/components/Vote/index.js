@@ -11,7 +11,9 @@ const VoteBox = ({ hasVoted, setHasVoted, matchup, handleNextMatchup }) => {
           bgcolor="bg-burntsienna"
           setHasVoted={setHasVoted}
         />
-        <span className="leading-none text-maizecrayola font-brand px-12">OR</span>
+        <span className="leading-none text-maizecrayola font-brand px-12 text-3xl">
+          OR
+        </span>
         <VoteButton
           animal={matchup.animal_2}
           bgcolor="bg-persiangreen"

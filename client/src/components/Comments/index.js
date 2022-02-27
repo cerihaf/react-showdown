@@ -35,12 +35,14 @@ const Comments = ({ matchupId }) => {
   }, [matchupId]);
 
   return (
-    <CommentsView
-      comment={comment}
-      setComment={setComment}
-      comments={comments}
-      createComment={createComment}
-    />
+    <div>
+      <CommentsView
+        comment={comment}
+        setComment={setComment}
+        comments={comments}
+        createComment={createComment}
+      />
+    </div>
   );
 };
 
