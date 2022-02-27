@@ -6,8 +6,8 @@ import { GET_MATCHUP } from "../../utils/queries";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export default function PieChart() {
-  const { data } = useQuery(GET_MATCHUP);
+export default function PieChart({data}) {
+
   const red = data?.redVoteCount;
   const blue = data?.blueVoteCount;
 
@@ -15,11 +15,11 @@ export default function PieChart() {
     <div className="bg-charcoal">
       <Pie
         data={{
-          labels: ["Animal 1", "Animal 2"],
+          labels: [data.animal_1, data.animal_2],
           datasets: [
             {
               label: "# of votes",
-              data: [blue, red],
+              data: [red, blue],
               backgroundColor: ["#E76F51", "#2A9D8F"],
             },
           ],
