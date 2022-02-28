@@ -2,7 +2,10 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]
 
-https://animalshowdown.herokuapp.com/
+https://reactshowdown.herokuapp.com/login
+
+![Screenshot of deployed project](client/public/images/screenshot.png)
+
 
 ## Description
 
