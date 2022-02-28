@@ -32,7 +32,7 @@ const Comments = ({ matchupId, voteId }) => {
 
   useEffect(() => {
     updateComments();
-  }, [matchupId]);
+  });
 
   return (
     <div>
