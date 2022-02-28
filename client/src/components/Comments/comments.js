@@ -13,6 +13,7 @@ export default function CommentsView({
         {comments?.map((comment) => {
           return (
             <div
+              key={comment.id}
               className={`p-2 m-2 rounded-xl flex items-center ${
                 comment.color === 2 ? "bg-persiangreen" : "bg-burntsienna"
               }`}
@@ -34,7 +35,6 @@ export default function CommentsView({
         <textarea
           placeholder="Voice your opinion!"
           onChangeCapture={(e) => setComment(e.target.value)}
-          value={comment}
           className="rounded-lg text-center font-login p-2 m-2 border-box"
         ></textarea>
         <div className="text-center">

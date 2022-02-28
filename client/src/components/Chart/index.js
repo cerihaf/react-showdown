@@ -6,14 +6,14 @@ import { GET_MATCHUP } from "../../utils/queries";
 
 ChartJS.register(ArcElement);
 
-export default function PieChart({data}) {
-
+export default function PieChart({ data }) {
   const red = data?.redVoteCount;
   const blue = data?.blueVoteCount;
 
   return (
     <div className="bg-charcoal max-w-sm">
       <Pie
+        key={data}
         data={{
           labels: [],
           datasets: [
