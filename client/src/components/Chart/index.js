@@ -1,10 +1,10 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Chart as ChartJS, ArcElement } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import { GET_MATCHUP } from "../../utils/queries";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement);
 
 export default function PieChart({data}) {
 
@@ -15,12 +15,12 @@ export default function PieChart({data}) {
     <div className="bg-charcoal max-w-sm">
       <Pie
         data={{
-          labels: [data.animal_1, data.animal_2],
+          labels: [],
           datasets: [
             {
               label: "# of votes",
-              data: [red, blue],
-              backgroundColor: ["#E76F51", "#2A9D8F"],
+              data: [blue, red],
+              backgroundColor: ["#2A9D8F", "#E76F51"],
             },
           ],
         }}
