@@ -17,7 +17,6 @@ const VoteButton = ({ animal, bgcolor, setHasVoted, setVoteId, _id, hasVoted, ma
         variables: { vote: +_id, matchup_id: +matchupId },
       });
 
-      console.log(data);
     } catch (e) {
       console.error(e);
     }

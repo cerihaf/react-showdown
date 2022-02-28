@@ -14,15 +14,13 @@ const Comments = ({ matchupId, voteId }) => {
   const [addComment] = useMutation(ADD_COMMENT);
   const createComment = async () => {
     try {
-      console.log(comment);
-      console.log(matchupId);
-      const { data } = await addComment({
+      await addComment({
         variables: { comment: comment, color: +voteId, matchup_id: +matchupId },
       });
 
       refetch();
     } catch (e) {
-      console.log(e);
+      return(e);
     }
   };
 
