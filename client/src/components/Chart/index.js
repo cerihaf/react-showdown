@@ -1,10 +1,10 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Chart as ChartJS, ArcElement } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import { GET_MATCHUP } from "../../utils/queries";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement);
 
 export default function PieChart({data}) {
 
