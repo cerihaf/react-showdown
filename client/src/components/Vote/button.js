@@ -13,11 +13,10 @@ const VoteButton = ({ animal, bgcolor, setHasVoted, setVoteId, _id, hasVoted, ma
     setHasVoted(true)
     setVoteId(_id)
     try {
-      const { data } = await vote({
+      await vote({
         variables: { vote: +_id, matchup_id: +matchupId },
       });
 
-      console.log(data);
     } catch (e) {
       console.error(e);
     }
