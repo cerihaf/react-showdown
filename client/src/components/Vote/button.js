@@ -1,11 +1,32 @@
 import React from "react";
+import { ADD_VOTE } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
 
-const VoteButton = ({ animal, bgcolor, setHasVoted }) => {
+
+const VoteButton = ({ animal, bgcolor, setHasVoted, setVoteId, _id, hasVoted, matchupId }) => {
   const classnames = `h-60 w-96 border-solid border-2 border-HeliotropeGray ${bgcolor} text-4xl font-brand text-zinc-700 rounded-3xl`;
+  const [vote] = useMutation(ADD_VOTE);
 
+
+  async function handleClick() {
+    if(!hasVoted){
+    setHasVoted(true)
+    setVoteId(_id)
+    try {
+      const { data } = await vote({
+        variables: { vote: +_id, matchup_id: +matchupId },
+      });
+
+      console.log(data);
+    } catch (e) {
+      console.error(e);
+    }
+    }
+    
+  }
   return (
     <div className="bg-charcoal flex-1 flex justify-center">
-      <button onClick={() => setHasVoted(true)} className={classnames}>
+      <button onClick={handleClick} className={classnames}>
         {animal}
       </button>
     </div>

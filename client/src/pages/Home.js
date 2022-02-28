@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import VoteBox from "../components/Vote";
 import PieChart from "../components/Chart";
 import Comments from "../components/Comments";
@@ -8,11 +8,12 @@ import AuthService from "../utils/auth";
 
 const Home = () => {
   if (!AuthService.loggedIn()) {
-    window.location.assign('/login');
+    window.location.assign("/login");
   }
 
   const [hasVoted, setHasVoted] = useState(false);
   const [matchupId, setMatchupId] = useState(1);
+  const [voteId, setVoteId] = useState(null);
 
   const { loading, data } = useQuery(GET_MATCHUP, {
     variables: { id: matchupId },
@@ -20,20 +21,24 @@ const Home = () => {
 
   const matchup = data?.getMatchup || {};
 
-  function handleNextMatchup() {
+  async function handleNextMatchup() {
     if (matchupId === 13) {
       setMatchupId(1);
     } else {
       setMatchupId((prevState) => prevState + 1);
     }
     setHasVoted(false);
-    //still need to save hasVoted to DB
   }
+
+  useEffect(() => {
+    if (matchup.hasVoted) {
+      setHasVoted(true);
+    }
+  }, [matchup.hasVoted]);
 
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.log(data);
 
   return (
     <div className="container max-w-5xl">
@@ -45,11 +50,13 @@ const Home = () => {
         handleNextMatchup={handleNextMatchup}
         setHasVoted={setHasVoted}
         hasVoted={hasVoted}
+        setVoteId={setVoteId}
+        matchupId={matchupId}
       />
       {hasVoted && (
         <div className="flex flex-row justify-around">
           <PieChart data={matchup} />
-          <Comments matchupId={matchupId} />
+          <Comments matchupId={matchupId} voteId={voteId} />
         </div>
       )}
     </div>

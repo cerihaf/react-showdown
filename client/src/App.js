@@ -10,10 +10,8 @@ import { setContext } from "@apollo/client/link/context";
 
 import Home from "./pages/Home";
 import Nav from "./components/Nav";
-import PieChart from "./components/Chart";
 import Login from "./pages/Login";
 import Footer from "./components/Footer";
-import Comments from "./components/Comments";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -43,7 +41,6 @@ function App() {
           <main className="flex-1 flex justify-center bg-charcoal">
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/chart" component={PieChart} />
               <Route exact path="/login" component={Login} />
             </Switch>
           </main>
