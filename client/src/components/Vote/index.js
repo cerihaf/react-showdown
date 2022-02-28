@@ -2,6 +2,8 @@ import React from "react";
 import VoteButton from "./button";
 import NextMatchupBtn from "./NextMatchupBtn";
 
+
+
 const VoteBox = ({ hasVoted, setHasVoted, matchup, handleNextMatchup }) => {
   return (
     <section>
