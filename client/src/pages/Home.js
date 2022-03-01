@@ -15,7 +15,7 @@ const Home = () => {
   const [matchupId, setMatchupId] = useState(1);
   const [voteId, setVoteId] = useState(null);
 
-  const { loading, data } = useQuery(GET_MATCHUP, {
+  const { loading, data, refetch } = useQuery(GET_MATCHUP, {
     variables: { id: matchupId },
   });
 
@@ -29,6 +29,10 @@ const Home = () => {
     }
     setHasVoted(false);
   }
+
+  useEffect(() => {
+    refetch();
+  }, [hasVoted]);
 
   useEffect(() => {
     if (matchup.hasVoted) {
