@@ -43,6 +43,6 @@ sequelize.sync({ force: false }).then(() => {
   //SET FORCE TO FALSE AFTER RUNNING IT FIRST TIME
   app.listen(PORT, () => {
     console.log(`API server running on port ${PORT}!`);
-    console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+    console.log(`Use GraphQL at http://127.0.0.1:${PORT}${server.graphqlPath}`);
   });
 });
