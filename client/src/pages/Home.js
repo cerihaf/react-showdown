@@ -22,7 +22,7 @@ const Home = () => {
 
   function handleNextMatchup() {
     let seenList = JSON.parse(localStorage.getItem("seenMatchups"));
-    if (!seenList) seenList = {};
+    if (!seenList) seenList = {}; //if list doesn't exist, make it
     seenList[matchupId] = true; //add the current matchup to the list of seen ones
     localStorage.setItem("seenMatchups",JSON.stringify(seenList)); //save it
     let target = -1; //default
@@ -35,12 +35,10 @@ const Home = () => {
     if (target === -1){ //if you've seen all the matchups
       if (matchupId === 12) setMatchupId(1);
       else setMatchupId((prevState) => prevState + 1);
-      setHasVoted(true);
+      //setHasVoted(true);
     }
-    else{
-      setMatchupId(target);
-      setHasVoted(false); //should be modular; users shouldn't have hasVoted=false for things they've already voted for
-    }
+    else setMatchupId(target);
+    setHasVoted(false); //should be modular?? users shouldn't have hasVoted=false for things they've already voted for
     //still need to save hasVoted to DB
   }
 
