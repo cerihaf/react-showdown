@@ -54,7 +54,7 @@ const Home = () => {
         matchupId={matchupId}
       />
       {hasVoted && (
-        <div className="flex flex-row justify-around">
+        <div className="flex flex-row justify-around mobile-s, mobile-m, mobile-l:flex-col">
           <PieChart data={matchup} />
           <Comments matchupId={matchupId} voteId={voteId} />
         </div>
