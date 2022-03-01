@@ -21,14 +21,28 @@ const Home = () => {
 
   const matchup = data?.getMatchup || {};
 
-  async function handleNextMatchup() {
-    console.log(matchupId)
-    if (matchupId === 12) {
-      setMatchupId(1);
-    } else {
-      setMatchupId((prevState) => prevState + 1);
+  function handleNextMatchup() {
+    let seenList = JSON.parse(localStorage.getItem("seenMatchups"));
+    if (!seenList) seenList = {};
+    seenList[matchupId] = true; //add the current matchup to the list of seen ones
+    localStorage.setItem("seenMatchups",JSON.stringify(seenList)); //save it
+    let target = -1; //default
+    for (let i = 1; i < 13; i++){
+      if (seenList[i] === undefined){ //undefined == haven't seen
+          target = i; //first matchup in the list you haven't seen
+          break;
+      }
     }
-    setHasVoted(false);
+    if (target === -1){ //if you've seen all the matchups
+      if (matchupId === 12) setMatchupId(1);
+      else setMatchupId((prevState) => prevState + 1);
+      setHasVoted(true);
+    }
+    else{
+      setMatchupId(target);
+      setHasVoted(false); //should be modular; users shouldn't have hasVoted=false for things they've already voted for
+    }
+    //still need to save hasVoted to DB
   }
 
   useEffect(() => {
