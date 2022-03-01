@@ -4,14 +4,18 @@ import NextMatchupBtn from "./NextMatchupBtn";
 
 
 
-const VoteBox = ({ hasVoted, setHasVoted, matchup, handleNextMatchup }) => {
+const VoteBox = ({ hasVoted, setHasVoted, matchup, handleNextMatchup, setVoteId, matchupId }) => {
   return (
     <section>
       <div className="bg-charcoal flex justify-between items-center max-w-5xl h-60 mx-auto">
         <VoteButton
           animal={matchup.animal_1}
           bgcolor="bg-burntsienna"
+          hasVoted={hasVoted}
           setHasVoted={setHasVoted}
+          setVoteId={setVoteId}
+          _id="1"
+          matchupId={matchupId}
         />
         <span className="leading-none text-maizecrayola font-brand px-12 text-3xl">
           OR
@@ -19,7 +23,11 @@ const VoteBox = ({ hasVoted, setHasVoted, matchup, handleNextMatchup }) => {
         <VoteButton
           animal={matchup.animal_2}
           bgcolor="bg-persiangreen"
+          hasVoted={hasVoted}
           setHasVoted={setHasVoted}
+          setVoteId={setVoteId}
+          _id="2"
+          matchupId={matchupId}
         />
       </div>
       {hasVoted && (

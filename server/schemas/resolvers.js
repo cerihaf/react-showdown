@@ -12,7 +12,6 @@ const resolvers = {
         });
         return userData;
       } catch (err) {
-        console.log("Couldn't find users!");
         return err;
       }
     },
@@ -25,20 +24,18 @@ const resolvers = {
           raw: true,
         });
 
-        console.log(userData);
         return userData;
       } catch (err) {
-        console.log("Couldn't find user!");
         return err;
       }
     },
     getMatchup: async (parent, { id }, context) => {
       //get a single matchup (this is an inefficient way of doing this, feel free to change)
       if (!context.user) return;
-      console.log(context.user);
+     
       const user_id = context.user.id; //CHANGE THIS TO JWT USER ID OR SOMETHING
       const matchupData = await Matchup.findOne({ where: { id }, raw: true });
-      console.log(matchupData);
+     
       if (!matchupData) return;
       //matchup exists
       const voteSearch = await Vote.findOne({
@@ -71,7 +68,7 @@ const resolvers = {
         hasVoted,
         comments,
       };
-      console.log(data);
+    
       return data;
     },
   },
@@ -99,7 +96,7 @@ const resolvers = {
     },
     vote: async (parent, { vote, matchup_id }, context) => {
       const user_id = context.user.id; //get user_id with JWT
-      console.log(user_id);
+     
       const voteSearch = await Vote.findOne({ where: { matchup_id, user_id } });
       if (!voteSearch) {
         //user hasn't voted yet on this matchup
@@ -109,7 +106,7 @@ const resolvers = {
           user_id: user_id,
         });
         try {
-          console.log(userVote, "Vote received!");
+         
           return userVote;
         } catch (e) {
           console.error(e);
@@ -126,7 +123,7 @@ const resolvers = {
           where: { id: user_id },
         },
       });
-      console.log(voteSearch);
+     
       if (!voteSearch) return;
       if (voteSearch.vote === 1 || 2) {
         //user has voted on this matchup, can comment
@@ -144,10 +141,9 @@ const resolvers = {
           return commentData;
         } catch (e) {
           console.error(e);
-          console.log("Could not post comment!");
         }
       } else {
-        console.log("user has not voted on this yet");
+        console.log("User has not voted on this yet.");
         return err;
       }
     },
