@@ -19,7 +19,7 @@ function Nav() {
   }
 
   return (
-    <header className="flex justify-between px-1 bg-charcoal">
+    <header className="flex justify-between px-1 bg-charcoal mobile-m, mobile-l, tablet:justify-center">
       <h1 className="font-brand text-3xl tracking-wide p-2 text-maizecrayola">
         <Link to="/">
           <span>
