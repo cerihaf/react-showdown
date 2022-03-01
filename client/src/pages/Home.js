@@ -22,7 +22,6 @@ const Home = () => {
   const matchup = data?.getMatchup || {};
 
   async function handleNextMatchup() {
-    console.log(matchupId)
     if (matchupId === 12) {
       setMatchupId(1);
     } else {

@@ -4,12 +4,15 @@ import { useQuery, useMutation } from "@apollo/client";
 import { GET_MATCHUP } from "../../utils/queries";
 import { ADD_COMMENT } from "../../utils/mutations";
 
+
 const Comments = ({ matchupId, voteId }) => {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
   const { data, refetch } = useQuery(GET_MATCHUP, {
     variables: { id: matchupId },
   });
+
+
 
   const [addComment] = useMutation(ADD_COMMENT);
   const createComment = async () => {
