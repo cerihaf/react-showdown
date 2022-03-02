@@ -15,20 +15,24 @@ const Home = () => {
   const [matchupId, setMatchupId] = useState(1);
   const [voteId, setVoteId] = useState(null);
 
-  const { loading, data } = useQuery(GET_MATCHUP, {
+  const { loading, data, refetch } = useQuery(GET_MATCHUP, {
     variables: { id: matchupId },
   });
 
   const matchup = data?.getMatchup || {};
 
   async function handleNextMatchup() {
-    if (matchupId === 13) {
+    if (matchupId === 12) {
       setMatchupId(1);
     } else {
       setMatchupId((prevState) => prevState + 1);
     }
     setHasVoted(false);
   }
+
+  useEffect(() => {
+    refetch();
+  }, [hasVoted]);
 
   useEffect(() => {
     if (matchup.hasVoted) {
