@@ -28,9 +28,9 @@ if (process.env.NODE_ENV === "production") {
 
 // Comment lines 31-33 out to use GraphQL playground BUT comment back in when we are about to do the build for production
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../client/build/index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 
 sequelize.sync({ force: false }).then(() => {
   //SET FORCE TO FALSE AFTER RUNNING IT FIRST TIME

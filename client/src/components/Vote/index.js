@@ -7,7 +7,7 @@ import NextMatchupBtn from "./NextMatchupBtn";
 const VoteBox = ({ hasVoted, setHasVoted, matchup, handleNextMatchup, setVoteId, matchupId }) => {
   return (
     <section>
-      <div className="bg-charcoal flex justify-between items-center max-w-5xl h-60 mx-auto">
+      <div className="bg-charcoal flex justify-between items-center max-w-5xl h-60 mx-auto mobile-s, mobile-m, mobile-l:flex-col justify-bewtween h-fit">
         <VoteButton
           animal={matchup.animal_1}
           bgcolor="bg-burntsienna"
