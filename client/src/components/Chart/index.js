@@ -11,7 +11,7 @@ export default function PieChart({ data }) {
   const blue = data?.blueVoteCount;
 
   return (
-    <div className="bg-charcoal max-w-sm">
+    <div className="bg-charcoal max-w-sm ml-auto mr-auto lg:">
       <Pie
         key={data}
         data={{
