@@ -7,6 +7,8 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import AuthService from "./utils/auth";
+import { Redirect } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Nav from "./components/Nav";
@@ -40,7 +42,9 @@ function App() {
           <Nav />
           <main className="flex-1 flex justify-center bg-charcoal">
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/">
+                {!AuthService.loggedIn() ? <Redirect to="/login" /> : <Home />}
+              </Route>
               <Route exact path="/login" component={Login} />
             </Switch>
           </main>

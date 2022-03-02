@@ -4,12 +4,8 @@ import PieChart from "../components/Chart";
 import Comments from "../components/Comments";
 import { GET_MATCHUP } from "../utils/queries";
 import { useQuery } from "@apollo/client";
-import AuthService from "../utils/auth";
 
 const Home = () => {
-  if (!AuthService.loggedIn()) {
-    window.location.assign("/login");
-  }
 
   const [hasVoted, setHasVoted] = useState(false);
   const [matchupId, setMatchupId] = useState(1);
