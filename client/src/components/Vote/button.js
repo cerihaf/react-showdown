@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client";
 
 
 const VoteButton = ({ animal, bgcolor, setHasVoted, setVoteId, _id, hasVoted, matchupId }) => {
-  const classnames = `h-60 w-96 border-solid border-2 border-HeliotropeGray ${bgcolor} text-4xl font-brand text-zinc-700 rounded-3xl`;
+  const classnames = `h-60 w-80 border-solid border-2 border-HeliotropeGray ${bgcolor} text-4xl font-brand text-zinc-700 rounded-3xl`;
   const [vote] = useMutation(ADD_VOTE);
 
 
