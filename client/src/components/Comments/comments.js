@@ -1,4 +1,6 @@
 import React from "react";
+import Filter from "bad-words";
+
 
 export default function CommentsView({
   comments,
@@ -6,6 +8,8 @@ export default function CommentsView({
   setComment,
   createComment,
 }) {
+
+const filter = new Filter();
 
   return (
     <div className="flex flex-col bg-slate-800 bg-opacity-80 rounded-xl p-4">
@@ -28,7 +32,7 @@ export default function CommentsView({
               />
               <div className="pl-4">
                 <h4 className="text-antiquewhite">{comment.username}</h4>
-                <span>{comment.comment}</span>
+                <span>{filter.clean(comment.comment)}</span>
               </div>
             </div>
           );
